@@ -1,11 +1,13 @@
 folders = {
     "Photos": {
         "path": "photos",
-        "subcategories": ["Egypt", "Budapest", "Prague", "School Trips", "Watches", "Diving", "Skiing", "Cat", "Amelia", "Other"]
+        "subcategories": ["Egypt", "Budapest", "Prague", "School Trips", "Watches", "Diving", "Skiing", "Cat", "Amelia",
+                          "Other"]
     },
     "Videos": {
         "path": "videos",
-        "subcategories": ["Egypt", "Budapest", "Prague", "School Trips", "Watches", "Diving", "Skiing", "Cat", "Amelia", "Other"]
+        "subcategories": ["Egypt", "Budapest", "Prague", "School Trips", "Watches", "Diving", "Skiing", "Cat", "Amelia",
+                          "Other"]
     },
     "Documents": "documents",
     "Music": "music",

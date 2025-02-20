@@ -7,7 +7,7 @@ from aiogram.dispatcher.event.bases import CancelHandler
 
 from databases.user_database import user_database
 from handlers.user_handlers import user_router
-from common.tokenRelease import TOKEN
+from common.token import TOKEN
 from tabulate import tabulate
 
 bot = Bot(token=TOKEN)
