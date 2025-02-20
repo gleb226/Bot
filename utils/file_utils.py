@@ -2,9 +2,11 @@ import os
 from aiogram import types, Bot
 from common.config import folders, translations, user_selections, file_extensions, max_file_sizes
 
+
 def get_user_category(chat_id):
     user_data = user_selections.get(chat_id, {})
     return user_data.get("category"), user_data.get("subcategory")
+
 
 async def handle_text_file(message: types.Message, category: str):
     if message.content_type == "text":
@@ -25,6 +27,7 @@ async def handle_text_file(message: types.Message, category: str):
 
     await message.answer(translations["English"]["file_saved"].format(category.capitalize()))
 
+
 async def get_file_info(message: types.Message):
     if message.content_type == "photo":
         return message.photo[-1].file_id, "jpg"
@@ -36,13 +39,16 @@ async def get_file_info(message: types.Message):
         return message.audio.file_id, "mp3"
     return None, None
 
+
 def is_valid_extension(category, extension):
     return extension in file_extensions.get(category, [])
+
 
 def get_folder_path(category, subcategory):
     if isinstance(folders[category], dict) and "path" in folders[category]:
         return os.path.join(folders[category]["path"], subcategory) if subcategory else folders[category]["path"]
     return folders[category]
+
 
 async def save_file(bot: Bot, file_id: str, folder_path: str, extension: str, chat_id: int, category: str):
     os.makedirs(folder_path, exist_ok=True)
