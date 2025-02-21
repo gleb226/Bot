@@ -6,11 +6,13 @@ from common.config import translations, folders, user_selections
 from databases.user_database import db
 from utils.file_utils import get_user_category, handle_text_file, get_file_info, is_valid_extension, get_folder_path, \
     save_file
+from handlers.error_handler import error_handler
 
 user_router = Router()
 
 
 @user_router.message(Command("start", "hello", "hi"))
+@error_handler("/start")
 async def start(message: types.Message):
     buttons = [KeyboardButton(text=category) for category in folders.keys()]
     keyboard = []
