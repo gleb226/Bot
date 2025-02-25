@@ -4,12 +4,9 @@ from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 
 from common.config import translations, folders, user_selections
 from databases.user_database import db
-from utils.file_utils import get_user_category, handle_text_file, get_file_info, is_valid_extension, get_folder_path, \
-    save_file
 from handlers.error_handler import error_handler
 
 user_router = Router()
-
 
 @user_router.message(Command("start", "hello", "hi"))
 @error_handler("/start")
@@ -33,7 +30,6 @@ async def start(message: types.Message):
         chat_type=message.chat.type
     )
 
-
 @user_router.message(lambda message: message.text in folders)
 async def category_selection(message: types.Message):
     category = message.text
@@ -51,7 +47,6 @@ async def category_selection(message: types.Message):
     else:
         await message.answer(translations["English"]["send_file"].format(category))
 
-
 @user_router.message(lambda message: any(
     message.text in folders[cat].get("subcategories", []) for cat in folders if isinstance(folders[cat], dict)))
 async def handle_subcategory(message: types.Message):
@@ -63,28 +58,3 @@ async def handle_subcategory(message: types.Message):
 
     user_selections[chat_id]["subcategory"] = message.text
     await message.answer(translations["English"]["send_file"].format(category))
-
-
-@user_router.message(lambda message: message.content_type in ["photo", "document", "video", "audio", "text"])
-async def handle_file(message: types.Message):
-    category, subcategory = get_user_category(message.chat.id)
-
-    if not category:
-        await message.answer("Please select a category first.")
-        return
-
-    if category in ["Passwords", "Contacts"]:
-        await handle_text_file(message, category)
-        return
-
-    file_info = await get_file_info(message)
-    if not file_info:
-        return
-
-    file_id, extension = file_info
-    if not is_valid_extension(category, extension):
-        await message.answer("Unsupported file format for the selected category.")
-        return
-
-    folder_path = get_folder_path(category, subcategory)
-    await save_file(message.bot, file_id, folder_path, extension, message.chat.id, category)

@@ -1,6 +1,6 @@
 import os
 from aiogram import types, Bot
-from common.config import folders, translations, user_selections, file_extensions, max_file_sizes
+from common.config import folders, translations, user_selections, file_extensions
 
 
 def get_user_category(chat_id):

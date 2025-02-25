@@ -16,16 +16,6 @@ folders = {
     "Contacts": "contacts"
 }
 
-max_file_sizes = {
-    "Photos": 20 * 1024 * 1024,
-    "Videos": 50 * 1024 * 1024,
-    "Documents": 50 * 1024 * 1024,
-    "Music": 50 * 1024 * 1024,
-    "Python": 50 * 1024 * 1024,
-    "Passwords": 50 * 1024 * 1024,
-    "Contacts": 50 * 1024 * 1024
-}
-
 file_extensions = {
     "Photos": ["jpg", "jpeg", "png", "gif", "bmp", "tiff"],
     "Videos": ["mp4", "mkv", "avi", "mov", "wmv", "flv"],

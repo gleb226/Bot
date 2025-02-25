@@ -2,6 +2,7 @@ import sqlite3
 from datetime import datetime
 from functools import wraps
 
+
 def log_error_to_db(user_id: int, command: str, error_message: str):
     conn = sqlite3.connect("errors.db")
     cursor = conn.cursor()
@@ -15,6 +16,7 @@ def log_error_to_db(user_id: int, command: str, error_message: str):
     conn.commit()
     conn.close()
 
+
 def error_handler(command: str):
     def decorator(func):
         @wraps(func)
@@ -24,5 +26,7 @@ def error_handler(command: str):
             except Exception as e:
                 log_error_to_db(message.from_user.id, command, str(e))
                 await message.answer("⛔ Function is currently unavailable. Please try again later.")
+
         return wrapper
+
     return decorator
