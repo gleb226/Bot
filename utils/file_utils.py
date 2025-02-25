@@ -1,3 +1,5 @@
+import asyncio
+import glob
 import os
 from aiogram import types, Bot
 from common.config import folders, translations, user_selections, file_extensions
@@ -62,3 +64,17 @@ async def save_file(bot: Bot, file_id: str, folder_path: str, extension: str, ch
         new_file.write(downloaded_file.getbuffer())
 
     await bot.send_message(chat_id, translations["English"]["file_saved"].format(category.capitalize()))
+
+
+async def send_files_from_folder(message: types.Message, folder_path: str, file_type: str):
+    try:
+        files = glob.glob(folder_path, recursive=True)
+        if files:
+            for file_path in files:
+                with open(file_path, 'rb') as file:
+                    await message.answer_document(file)
+            await message.answer(f'All files from {file_type.replace("_", " ").capitalize()} have been sent.')
+        else:
+            await message.answer(f'No files found in the folder for {file_type}.')
+    except Exception as e:
+        await message.answer(f'Error sending {file_type}: {str(e)}')

@@ -8,6 +8,7 @@ from handlers.error_handler import error_handler
 
 user_router = Router()
 
+
 @user_router.message(Command("start", "hello", "hi"))
 @error_handler("/start")
 async def start(message: types.Message):
@@ -30,6 +31,7 @@ async def start(message: types.Message):
         chat_type=message.chat.type
     )
 
+
 @user_router.message(lambda message: message.text in folders)
 @error_handler("category_selection")
 async def category_selection(message: types.Message):
@@ -47,6 +49,7 @@ async def category_selection(message: types.Message):
         await message.answer(translations["English"]["select_subcategory"], reply_markup=markup)
     else:
         await message.answer(translations["English"]["send_file"].format(category))
+
 
 @user_router.message(lambda message: any(
     message.text in folders[cat].get("subcategories", []) for cat in folders if isinstance(folders[cat], dict)))
