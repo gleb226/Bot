@@ -58,10 +58,6 @@ async def save_file(bot: Bot, file_id: str, folder_path: str, extension: str, ch
     file_info = await bot.get_file(file_id)
     downloaded_file = await bot.download_file(file_info.file_path)
 
-    if downloaded_file.getbuffer().nbytes > max_file_sizes[category]:
-        await bot.send_message(chat_id, translations["English"]["file_too_large"])
-        return
-
     with open(file_path, 'wb') as new_file:
         new_file.write(downloaded_file.getbuffer())
 

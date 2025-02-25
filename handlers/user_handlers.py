@@ -31,6 +31,7 @@ async def start(message: types.Message):
     )
 
 @user_router.message(lambda message: message.text in folders)
+@error_handler("category_selection")
 async def category_selection(message: types.Message):
     category = message.text
     user_selections[message.chat.id] = {"category": category, "subcategory": None}
@@ -49,6 +50,7 @@ async def category_selection(message: types.Message):
 
 @user_router.message(lambda message: any(
     message.text in folders[cat].get("subcategories", []) for cat in folders if isinstance(folders[cat], dict)))
+@error_handler("subcategory_selection")
 async def handle_subcategory(message: types.Message):
     chat_id = message.chat.id
     category = user_selections.get(chat_id, {}).get("category")

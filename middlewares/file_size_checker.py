@@ -1,4 +1,6 @@
 from aiogram import types, Router
+
+from handlers.error_handler import error_handler
 from utils.file_utils import get_user_category, handle_text_file, get_file_info, is_valid_extension, get_folder_path, save_file
 
 file_size_router = Router()
@@ -6,6 +8,7 @@ file_size_router = Router()
 MAX_FILE_SIZE = 200 * 1024 * 1024
 
 @file_size_router.message(lambda message: message.content_type in ["photo", "document", "video", "audio", "text"])
+@error_handler("file_handler")
 async def handle_file(message: types.Message):
     if message.document and message.document.file_size > MAX_FILE_SIZE:
         await message.answer("The file is too large. Maximum size is 200MB.")
