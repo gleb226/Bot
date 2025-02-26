@@ -1,10 +1,14 @@
+import os.path
 import sqlite3
+
 from datetime import datetime
 from functools import wraps
 
+from app.common.config import ERRORS_DB_PATH
+
 
 def log_error_to_db(user_id: int, username: str, firstname: str, lastname: str, command: str, error_message: str):
-    conn = sqlite3.connect("errors.db")
+    conn = sqlite3.connect(ERRORS_DB_PATH)
     cursor = conn.cursor()
     cursor.execute(
         """CREATE TABLE IF NOT EXISTS errors (

@@ -2,9 +2,9 @@ from aiogram.filters import Command
 from aiogram import types, Router
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 
-from common.config import translations, folders, user_selections
-from databases.user_database import db
-from handlers.error_handler import error_handler
+from app.common.config import translations, folders, user_selections
+from app.databases.user_database import db
+from app.handlers.error_handler import error_handler
 
 user_router = Router()
 

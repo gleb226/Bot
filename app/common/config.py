@@ -1,3 +1,19 @@
+import os
+
+BASE_DIR = os.getcwd()
+
+APP_DIR = os.path.join(BASE_DIR, "app")
+
+DB_DIR = os.path.join(APP_DIR, "databases")
+
+USER_FILES_DIR = os.path.join(BASE_DIR, "user_files")
+
+USERS_DB_PATH = os.path.join(DB_DIR, "users.db")
+ERRORS_DB_PATH = os.path.join(DB_DIR, "errors.db")
+
+os.makedirs(DB_DIR, exist_ok=True)
+os.makedirs(USER_FILES_DIR, exist_ok=True)
+
 folders = {
     "Photos": {
         "path": "photos",

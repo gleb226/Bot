@@ -1,8 +1,19 @@
-import asyncio
 import glob
 import os
+
 from aiogram import types, Bot
-from common.config import folders, translations, user_selections, file_extensions
+
+from app.common.config import folders, translations, user_selections, file_extensions, USER_FILES_DIR
+
+
+async def save_user_file(file, category, filename):
+    category_path = os.path.join(USER_FILES_DIR, category)
+    os.makedirs(category_path, exist_ok=True)
+
+    file_path = os.path.join(category_path, filename)
+    await file.download(destination_file=file_path)
+
+    return file_path
 
 
 def get_user_category(chat_id):
@@ -21,8 +32,10 @@ async def handle_text_file(message: types.Message, category: str):
         await message.answer("Please send text or a text document for this category.")
         return
 
-    file_path = os.path.join(folders[category], f"{category}.txt")
-    os.makedirs(os.path.dirname(file_path), exist_ok=True)
+    category_path = os.path.join(USER_FILES_DIR, category)
+    os.makedirs(category_path, exist_ok=True)
+
+    file_path = os.path.join(category_path, f"{category}.txt")
 
     with open(file_path, 'a', encoding='utf-8') as file:
         file.write(text_data + "\n")
@@ -47,9 +60,8 @@ def is_valid_extension(category, extension):
 
 
 def get_folder_path(category, subcategory):
-    if isinstance(folders[category], dict) and "path" in folders[category]:
-        return os.path.join(folders[category]["path"], subcategory) if subcategory else folders[category]["path"]
-    return folders[category]
+    category_path = os.path.join(USER_FILES_DIR, folders[category]["path"]) if isinstance(folders[category], dict) else os.path.join(USER_FILES_DIR, folders[category])
+    return os.path.join(category_path, subcategory) if subcategory else category_path
 
 
 async def save_file(bot: Bot, file_id: str, folder_path: str, extension: str, chat_id: int, category: str):
@@ -68,7 +80,7 @@ async def save_file(bot: Bot, file_id: str, folder_path: str, extension: str, ch
 
 async def send_files_from_folder(message: types.Message, folder_path: str, file_type: str):
     try:
-        files = glob.glob(folder_path, recursive=True)
+        files = glob.glob(os.path.join(folder_path, "*"), recursive=True)
         if files:
             for file_path in files:
                 with open(file_path, 'rb') as file:

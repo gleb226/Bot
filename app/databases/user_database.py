@@ -1,12 +1,14 @@
+import os.path
 import sqlite3
 import logging
+
 from datetime import datetime
 from tabulate import tabulate
-
+from app.common.config import USERS_DB_PATH
 
 class user_database:
-    def __init__(self, db_name="users.db"):
-        self.db_name = db_name
+    def __init__(self):
+        self.db_name = USERS_DB_PATH
         self._init_database()
 
     def _execute(self, query, params=(), fetchone=False, fetchall=False):

@@ -1,7 +1,7 @@
 from aiogram import types, Router
 
-from handlers.error_handler import error_handler
-from utils.file_utils import get_user_category, handle_text_file, get_file_info, is_valid_extension, get_folder_path, \
+from app.handlers.error_handler import error_handler
+from app.utils.file_utils import get_user_category, handle_text_file, get_file_info, is_valid_extension, get_folder_path, \
     save_file
 
 file_size_router = Router()
