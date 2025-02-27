@@ -60,7 +60,9 @@ def is_valid_extension(category, extension):
 
 
 def get_folder_path(category, subcategory):
-    category_path = os.path.join(USER_FILES_DIR, folders[category]["path"]) if isinstance(folders[category], dict) else os.path.join(USER_FILES_DIR, folders[category])
+    category_path = os.path.join(USER_FILES_DIR, folders[category]["path"]) if isinstance(folders[category],
+                                                                                          dict) else os.path.join(
+        USER_FILES_DIR, folders[category])
     return os.path.join(category_path, subcategory) if subcategory else category_path
 
 

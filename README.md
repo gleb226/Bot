@@ -1,6 +1,6 @@
 # 📢 Invite to Use @ServerMedlebReleaseBot
 
-[@ServerMedlebReleaseBot](https://t.me/MedlebServerBot) can be instabile, but it's the last release version!!!
+[@ServerMedlebReleaseBot](https://t.me/MedlebServerBot) can be instability, but it's the last release version!!!
 
 ## 🚀 Bot Features:
 

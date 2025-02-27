@@ -25,9 +25,12 @@ folders = {
         "subcategories": ["Egypt", "Budapest", "Prague", "School Trips", "Watches", "Diving", "Skiing", "Cat", "Amelia",
                           "Other"]
     },
+    "Programming": {
+        "path": "programming",
+        "subcategories": ["Python", "Java", "JavaScript", "HTML", "CSS", "SQL", "JSON", "XML", "Databases", "Other"]
+    },
     "Documents": "documents",
     "Music": "music",
-    "Python": "Python Files",
     "Passwords": "passwords",
     "Contacts": "contacts"
 }
@@ -37,7 +40,7 @@ file_extensions = {
     "Videos": ["mp4", "mkv", "avi", "mov", "wmv", "flv"],
     "Music": ["mp3", "wav", "flac", "aac", "ogg"],
     "Documents": ["pdf", "docx", "txt", "xlsx", "pptx"],
-    "Python": ["py"],
+    "Programming": ["py", "java", "js", "html", "css", "sql", "json", "xml", "db"],
     "Passwords": ["txt", "csv"],
     "Contacts": ["vcf", "txt"]
 }

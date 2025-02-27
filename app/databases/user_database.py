@@ -6,6 +6,7 @@ from datetime import datetime
 from tabulate import tabulate
 from app.common.config import USERS_DB_PATH
 
+
 class user_database:
     def __init__(self):
         self.db_name = USERS_DB_PATH
