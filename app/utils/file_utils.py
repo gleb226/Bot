@@ -80,6 +80,8 @@ async def save_file(bot: Bot, file_id: str, folder_path: str, extension: str, ch
     await bot.send_message(chat_id, translations["English"]["file_saved"].format(category.capitalize()))
 
 
+'''
+
 async def send_files_from_folder(message: types.Message, folder_path: str, file_type: str):
     try:
         files = glob.glob(os.path.join(folder_path, "*"), recursive=True)
@@ -92,3 +94,6 @@ async def send_files_from_folder(message: types.Message, folder_path: str, file_
             await message.answer(f'No files found in the folder for {file_type}.')
     except Exception as e:
         await message.answer(f'Error sending {file_type}: {str(e)}')
+
+
+'''
