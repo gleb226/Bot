@@ -27,7 +27,7 @@ folders = {
     },
     "Programming": {
         "path": "programming",
-        "subcategories": ["Python", "Java", "JavaScript", "HTML", "CSS", "SQL", "JSON", "XML", "Databases", "Other"]
+        "subcategories": ["Python", "Java", "JavaScript", "HTML", "CSS", "SQL", "JSON", "XML", "Databases", "Images", "Other"]
     },
     "Documents": "documents",
     "Music": "music",
@@ -40,7 +40,7 @@ file_extensions = {
     "Videos": ["mp4", "mkv", "avi", "mov", "wmv", "flv"],
     "Music": ["mp3", "wav", "flac", "aac", "ogg"],
     "Documents": ["pdf", "docx", "txt", "xlsx", "pptx"],
-    "Programming": ["py", "java", "js", "html", "css", "sql", "json", "xml", "db"],
+    "Programming": ["py", "java", "js", "html", "css", "sql", "json", "xml", "db", "jpg", "jpeg", "png", "gif"],
     "Passwords": ["txt", "csv"],
     "Contacts": ["vcf", "txt"]
 }
