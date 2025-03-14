@@ -31,6 +31,7 @@ folders = {
     },
     "Documents": "documents",
     "Music": "music",
+    "Archives": "archives",
     "Passwords": "passwords",
     "Contacts": "contacts"
 }
@@ -41,6 +42,7 @@ file_extensions = {
     "Music": ["mp3", "wav", "flac", "aac", "ogg"],
     "Documents": ["pdf", "docx", "txt", "xlsx", "pptx"],
     "Programming": ["py", "java", "js", "html", "css", "sql", "json", "xml", "db", "jpg", "jpeg", "png", "gif"],
+    "Archives": ["7z", "rar", "zip", "tar", "gz", "tar.gz", "tgz", "bz2", "bz2", "tbz"],
     "Passwords": ["txt", "csv"],
     "Contacts": ["vcf", "txt"]
 }
